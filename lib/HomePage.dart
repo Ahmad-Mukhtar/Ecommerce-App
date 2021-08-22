@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:carousel_pro/carousel_pro.dart';
+import 'package:ecommerce_app/Components/Horizontal_list.dart';
 
+import 'Components/Products.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -10,8 +13,29 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    Widget image_carasoul=Container(
+      height: 200.0,
+      child: Carousel(
+       boxFit: BoxFit.cover,
+       images: [
+         AssetImage('images/c1.jpg'),
+         AssetImage('images/m1.jpeg'),
+         AssetImage('images/m2.jpg'),
+         AssetImage('images/w1.jpeg'),
+         AssetImage('images/w3.jpeg'),
+         AssetImage('images/w4.jpeg'),
+       ],
+        dotSize: 4.0,
+        dotBgColor: Colors.redAccent,
+        indicatorBgPadding: 1.0,
+        autoplay: false,
+       // animationCurve: Curves.fastOutSlowIn,
+      //  animationDuration: Duration(microseconds: 1000),
+      ),
+    );
     return Scaffold(
       appBar: AppBar(
+        elevation: 0.0,
         title: Text('Ecommerce'),
         backgroundColor: Colors.red,
         actions: [
@@ -109,6 +133,21 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
+      ),
+      body: ListView(
+        children: [
+          image_carasoul,
+          Padding(padding: EdgeInsets.all(8.0),
+            child: Text('Categories'),
+          ),
+        HorizontalList(),
+          Padding(padding: EdgeInsets.fromLTRB(8.0,30.0,8.0,8.0),
+          child: Text('Recent Products'),),
+          Container(
+            height: 320.0,
+            child: Products(),
+          )
+        ],
       ),
     );
   }
