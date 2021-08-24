@@ -144,7 +144,7 @@ class _HomePageState extends State<HomePage> {
           Padding(padding: EdgeInsets.fromLTRB(8.0,30.0,8.0,8.0),
           child: Text('Recent Products'),),
           Container(
-            height: 320.0,
+            height: 280.0,
             child: Products(),
           )
         ],

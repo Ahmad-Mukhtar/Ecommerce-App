@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ecommerce_app/Pages/Product_Details.dart';
 
 
 class Products extends StatefulWidget {
@@ -11,7 +12,7 @@ class _ProductsState extends State<Products> {
 
   var product_list=[
     {
-      "name":"Balzer",
+      "name":"Blazer",
       "picture":"images/products/blazer1.jpeg",
       "old_price":120,
       "price":85
@@ -82,10 +83,14 @@ class Singleproducts extends StatelessWidget {
       child: Hero(
         tag: product_name,
         child: Material(
-
-          child: InkWell(onTap: (){
-            print("Tapped "+ product_name);
-          },
+          child: InkWell(onTap: () =>
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context)=>ProductDetails(
+                  product_detail_name: product_name,
+                  product_detail_price: price,
+                  product_detail_oldprice: old_price,
+                  product_detail_picture: product_picture,
+                ))),
           child: GridTile(
             footer: Container(
               color: Colors.white70,
